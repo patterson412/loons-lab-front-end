@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 
 export async function GET(request) {
-    const { searchParams } = request.nextUrl;
+    const { searchParams } = request.nextUrl; // outside the try catch block to prevent DynamicServerError error going to catch block because the route handler in Next is static
     try {
 
         const latitude = searchParams.get('lat');
