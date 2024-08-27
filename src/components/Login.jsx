@@ -4,10 +4,8 @@ import React, { useEffect, useState, useContext } from "react";
 import "../../globals.css";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Link from 'next/link';
 import Image from "next/image";
 import { authCheck } from "@/utils/auth";
-import { createAccess } from "@/utils/auth";
 
 
 import {
@@ -32,13 +30,16 @@ export default function Login() {
     const [showContent, setShowContent] = useState(false);
 
     useEffect(() => {
-        const passed = authCheck();
-        if (passed) {
-            router.push("/home");
-            return;
-        } else {
-            setShowContent(true);
-        }
+        const checkAuth = async () => {
+            const passed = await authCheck();
+            if (passed) {
+                router.push("/home");
+            } else {
+                setShowContent(true);
+            }
+        };
+
+        checkAuth();
     }, []);
 
     const handleSubmit = async (event) => {
@@ -55,7 +56,6 @@ export default function Login() {
 
             if (result.status === 200) {
                 console.log(result.data.message);
-                createAccess(username);
                 toast({
                     title: "Login Successfull",
                     description: result.data.message || 'An error occurred',
