@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { HomeIcon, PencilIcon, CalendarIcon, MailIcon } from "lucide-react";
+import { HomeIcon, PencilIcon, CalendarIcon, MailIcon, LogOut } from "lucide-react";
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils";
@@ -31,7 +31,8 @@ import {
 
 const DATA = {
     navbar: [
-        { href: "#", icon: HomeIcon, label: "Home" },
+        { href: "/home", icon: HomeIcon, label: "Home" },
+        { href: "/api/logout", icon: LogOut, label: "Log out" },
     ],
 };
 
