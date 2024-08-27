@@ -32,7 +32,7 @@ export default function Login() {
     const { toast } = useToast();
     const [showContent, setShowContent] = useState(false);
 
-    const { theme, systemTheme } = useTheme();
+    const { theme, systemTheme, setTheme } = useTheme();
     const [color, setColor] = useState("#ffffff");
 
     useEffect(() => {
@@ -47,6 +47,12 @@ export default function Login() {
         };
 
         checkAuth();
+    }, []);
+
+    useEffect(() => {
+        if (theme !== 'system') {
+            setTheme('system');
+        }
     }, []);
 
     useEffect(() => {
