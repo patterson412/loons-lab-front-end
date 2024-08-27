@@ -1,16 +1,15 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
 
-
 export async function GET(request) {
     try {
-        const { searchParams } = new URL(request.url);
+
+        const { searchParams } = request.nextUrl;
 
         const latitude = searchParams.get('lat');
         const longitude = searchParams.get('lon');
 
-        if ((latitude != null && latitude != undefined) && (longitude != null && longitude != undefined)) {
-
+        if (latitude && longitude) {
             const result = await axios.get(`https://api.openweathermap.org/data/3.0/onecall`, {
                 params: {
                     lat: latitude,
@@ -25,13 +24,9 @@ export async function GET(request) {
             } else {
                 return NextResponse.json({ error: 'No data received from weather API' }, { status: 500 });
             }
-
         } else {
             return NextResponse.json({ error: 'Error with lat or lon, try again' }, { status: 400 });
         }
-
-
-
     } catch (error) {
         console.error('Error fetching weather data:', error);
         return NextResponse.json({ error: 'Failed to fetch weather data' }, { status: 500 });
