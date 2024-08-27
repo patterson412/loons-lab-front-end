@@ -2,9 +2,8 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 
 export async function GET(request) {
+    const { searchParams } = request.nextUrl;
     try {
-
-        const { searchParams } = request.nextUrl;
 
         const latitude = searchParams.get('lat');
         const longitude = searchParams.get('lon');
