@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { HomeIcon, PencilIcon, CalendarIcon, MailIcon, LogOut } from "lucide-react";
-import { Moon, Sun } from "lucide-react"
+import "../../globals.css";
+import { HomeIcon, LogOut, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
