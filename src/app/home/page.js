@@ -1,7 +1,7 @@
-
+import Navbar from "@/components/Navbar"
 
 export default function FutureHomePage() {
     
 
-    return <div>Coming soon</div>
+    return <Navbar />
 }

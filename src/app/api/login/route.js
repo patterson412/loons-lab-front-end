@@ -15,7 +15,7 @@ export async function POST(request) {
 
 
         if (trimmedUsername === process.env.USERNAME && trimmedPassword === process.env.PASSWORD) {
-            let response = NextResponse.json({ message: 'Username and password matched' }, { status: 200 });
+            const response = NextResponse.json({ message: 'Username and password matched' }, { status: 200 });
             const userInfo = {
                 username: trimmedUsername,
                 expiryTime: new Date(Date.now() + EXPIRY_TIME).toISOString() // 15 minutes in milliseconds

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 
 export async function GET(request) {
+
     const { searchParams } = request.nextUrl; // outside the try-catch block, allowing Next.js to detect the dynamic usage early. This prompts Next.js to opt the route into dynamic rendering automatically.
     try {
 
