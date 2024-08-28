@@ -16,7 +16,6 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Dock, DockIcon } from "@/components/magicui/dock";
-//import { ModeToggle } from "@/components/mode-toggle";
 import BlurIn from "./magicui/blur-in";
 import { authCheck } from "@/utils/auth";
 
@@ -47,7 +46,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const checkAuth = async () => {
-            const passed = await authCheck();
+            const passed = await authCheck();   // Checking if have access to proceed to home page
             if (passed) {
                 setShowContent(true);
             } else {
@@ -57,6 +56,11 @@ export default function Navbar() {
 
         checkAuth();
     }, []);
+
+    const handleHomeClick = (e) => {
+        e.preventDefault();
+        window.location.href = '/home';     // Navigates to home page and reloads the entire page
+    };
 
 
     if (!showContent) {
@@ -86,10 +90,7 @@ export default function Navbar() {
                                                         buttonVariants({ variant: "ghost", size: "icon" }),
                                                         "size-12 rounded-full",
                                                     )}
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        window.location.href = item.href;
-                                                    }}
+                                                    onClick={handleHomeClick}
                                                 >
                                                     <item.icon className="size-4" />
                                                 </a>
