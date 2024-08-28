@@ -65,7 +65,7 @@ export default function Navbar() {
 
 
     return (
-        <div className="grid grid-cols-1 relative">
+        <div className="grid grid-cols-1 relative px-5">
             <div className="relative flex justify-between items-center p-4">
                 <BlurIn
                     word="My Weather"

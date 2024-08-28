@@ -31,6 +31,7 @@ module.exports = {
             "offset-distance": "100%",
           },
         },
+
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

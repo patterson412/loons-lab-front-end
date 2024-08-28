@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const isAccessExpired = async () => {
     try {
-        const response = await axios.get("/api/validate-access", { withCredentials: true }); // the option ensures the cookie is included in cross origin requests
+        const response = await axios.get("/api/validate-access", { withCredentials: true }); // the option ensures the cookie is included in requests (specially COR's)
 
         if (response.status === 200) {
             console.log(response.data.message);
