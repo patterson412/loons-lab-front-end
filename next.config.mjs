@@ -14,6 +14,7 @@ const nextConfig = {
         USERNAME: process.env.USERNAME,
         PASSWORD: process.env.PASSWORD,
         API_KEY: process.env.API_KEY,
+        COOKIE_DOMAIN: process.env.COOKIE_DOMAIN,
     },
 };
 
