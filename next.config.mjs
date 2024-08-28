@@ -3,9 +3,10 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
-                protocol: 'https',
+                protocol: 'http',
                 hostname: 'openweathermap.org',
-                pathname: '/**',
+                port: '',
+                pathname: '/img/wn/**',
             },
         ],
     },

@@ -2,6 +2,7 @@
 import "../../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { WeatherDataProvider } from "@/context/weatherData";
 
 
 
@@ -20,8 +21,10 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
-          <main>{children}</main>
-          <Toaster />
+          <WeatherDataProvider>
+            <main>{children}</main>
+            <Toaster />
+          </WeatherDataProvider>
 
         </ThemeProvider>
       </body>

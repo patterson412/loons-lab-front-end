@@ -10,11 +10,11 @@ export async function GET(request) {
         const longitude = searchParams.get('lon');
 
         if (latitude && longitude) {
-            const result = await axios.get(`https://api.openweathermap.org/data/3.0/onecall`, {
+            const result = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse`, {
                 params: {
                     lat: latitude,
                     lon: longitude,
-                    units: 'metric',
+                    limit: '1',
                     appid: process.env.API_KEY
                 }
             });
@@ -29,7 +29,7 @@ export async function GET(request) {
             return NextResponse.json({ error: 'Error with lat or lon, try again' }, { status: 400 });
         }
     } catch (error) {
-        console.error('Error fetching weather data:', error);
-        return NextResponse.json({ error: 'Failed to fetch weather data' }, { status: 500 });
+        console.error('Error fetching geo data:', error);
+        return NextResponse.json({ error: 'Failed to fetch geo data' }, { status: 500 });
     }
 }
