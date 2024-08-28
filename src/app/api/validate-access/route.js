@@ -33,7 +33,7 @@ export async function GET(request) {
             secure: process.env.NODE_ENV === "production", // NextJS automatically handles the NODE_ENV, 
             path: "/",
             domain: process.env.COOKIE_DOMAIN || '',
-            sameSite: "strict", // Help to prevent csrf attacks
+            sameSite: "none", // Help to prevent csrf attacks
             maxAge: 15 * 60, // 15 minutes in seconds
         });
 
