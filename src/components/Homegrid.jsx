@@ -33,7 +33,7 @@ export default function Homegrid() {
                             lat: "6.927079",
                             lon: "79.861244",
                         }
-                    });
+                    }, { withCredentials: true });
 
                     if (response.data) {
                         setWeatherData(response.data);
@@ -53,7 +53,7 @@ export default function Homegrid() {
                             lat: "6.927079",
                             lon: "79.861244",
                         }
-                    });
+                    }, { withCredentials: true });
 
                     if (response.data && response.data.length > 0) {
                         console.log(response.data[0].name);
