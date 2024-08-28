@@ -32,7 +32,7 @@ export async function GET(request) {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // NextJS automatically handles the NODE_ENV, 
             path: "/",
-            sameSite: "strict", // Help to prevent csrf attacks
+            sameSite: "none", // Help to prevent csrf attacks
             maxAge: 15 * 60, // 15 minutes in seconds
         });
 
