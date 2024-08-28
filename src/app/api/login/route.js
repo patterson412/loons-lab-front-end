@@ -24,7 +24,7 @@ export async function POST(request) {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === "production", // NextJS automatically handles the NODE_ENV, 
                 path: "/",
-                sameSite: "lax", // Help to prevent csrf attacks if set to strict
+                sameSite: "none", // Help to prevent csrf attacks if set to strict
                 maxAge: 15 * 60, // 15 minutes in seconds
             });
             return response;

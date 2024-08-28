@@ -8,7 +8,7 @@ export function GET(request) {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         path: "/",
-        sameSite: "lax",
+        sameSite: "none",
         maxAge: 0,
     });
 
