@@ -79,15 +79,31 @@ export default function Navbar() {
                                 <DockIcon key={item.label}>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
-                                            <Link
-                                                href={item.href}
-                                                className={cn(
-                                                    buttonVariants({ variant: "ghost", size: "icon" }),
-                                                    "size-12 rounded-full",
-                                                )}
-                                            >
-                                                <item.icon className="size-4" />
-                                            </Link>
+                                            {item.label === "Home" ? (
+                                                <a
+                                                    href={item.href}
+                                                    className={cn(
+                                                        buttonVariants({ variant: "ghost", size: "icon" }),
+                                                        "size-12 rounded-full",
+                                                    )}
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        window.location.href = item.href;
+                                                    }}
+                                                >
+                                                    <item.icon className="size-4" />
+                                                </a>
+                                            ) : (
+                                                <Link
+                                                    href={item.href}
+                                                    className={cn(
+                                                        buttonVariants({ variant: "ghost", size: "icon" }),
+                                                        "size-12 rounded-full",
+                                                    )}
+                                                >
+                                                    <item.icon className="size-4" />
+                                                </Link>
+                                            )}
                                         </TooltipTrigger>
                                         <TooltipContent>
                                             <p>{item.label}</p>
