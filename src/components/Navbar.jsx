@@ -30,11 +30,11 @@ import axios from "axios";
 
 
 
-const DATA = {
+/*const DATA = {
     navbar: [
         { href: "/home", icon: HomeIcon, label: "Home" },
     ],
-};
+};*/
 
 export default function Navbar() {
 
@@ -74,6 +74,10 @@ export default function Navbar() {
         }
     };
 
+    const goHome = async () => {
+        window.location.href = '/home'; // I need to refresh when i go home thats why using this instead of router
+    };
+
 
     if (!showContent) {
         return null;
@@ -91,26 +95,23 @@ export default function Navbar() {
                 <div>
                     <TooltipProvider>
                         <Dock direction="middle">
-                            {DATA.navbar.map((item) => (
-                                <DockIcon key={item.label}>
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <Link
-                                                href={item.href}
-                                                className={cn(
-                                                    buttonVariants({ variant: "ghost", size: "icon" }),
-                                                    "size-12 rounded-full",
-                                                )}
-                                            >
-                                                <item.icon className="size-4" />
-                                            </Link>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>{item.label}</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </DockIcon>
-                            ))}
+                            <DockIcon>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            className="size-12 rounded-full"
+                                            onClick={goHome}
+                                        >
+                                            <HomeIcon className="size-4" />
+                                        </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>Log out</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </DockIcon>
                             <DockIcon>
                                 <Tooltip>
                                     <TooltipTrigger asChild>
