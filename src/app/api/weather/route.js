@@ -20,7 +20,7 @@ export async function GET(request) {
             });
 
             if (result.data) {
-                console.log(result.data);
+                console.log("Weather data recieved...");
                 return NextResponse.json(result.data, { status: 200 });
             } else {
                 return NextResponse.json({ error: 'No data received from weather API' }, { status: 500 });

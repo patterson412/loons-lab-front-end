@@ -26,13 +26,13 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import axios from "axios";
 
 
 
 const DATA = {
     navbar: [
         { href: "/home", icon: HomeIcon, label: "Home" },
-        { href: "/api/logout", icon: LogOut, label: "Log out" },
     ],
 };
 
@@ -57,6 +57,22 @@ export default function Navbar() {
 
         checkAuth();
     }, []);
+
+
+    const handleLogout = async () => {
+        // logout logic
+        try {
+            const response = await axios.get('/api/logout', { withCredentials: true });
+
+            //router.push('/login');
+            console.log("logout successfull");
+            router.push("/login");
+
+
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
 
 
     if (!showContent) {
@@ -95,6 +111,23 @@ export default function Navbar() {
                                     </Tooltip>
                                 </DockIcon>
                             ))}
+                            <DockIcon>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            className="size-12 rounded-full"
+                                            onClick={handleLogout}
+                                        >
+                                            <LogOut className="size-4" />
+                                        </Button>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <p>Log out</p>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </DockIcon>
                             <Separator orientation="vertical" className="h-full" />
                             <DockIcon>
                                 <Tooltip open={showTooltip}>

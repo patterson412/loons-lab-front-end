@@ -80,7 +80,7 @@ export default function Login() {
             const result = await axios.post("/api/login", { // Error codes 400 and 401 get thrown to the catch block by axios
                 username: username,
                 password: password,
-            });
+            }, { withCredentials: true });
 
             if (result.status === 200) {
                 console.log(result.data.message);

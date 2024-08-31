@@ -1,10 +1,16 @@
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 
 export async function GET(request) {
     // Parse cookies from the request headers
     //const cookies = cookie.parse(request.headers.get("cookie") || ""); // This approach needed the cookie package installed
-    const accessData = request.cookies.get('access');
+
+    //const accessData = request.cookies.get('access');
+
+    const cookieStore = cookies(); // Extracts cookies from request
+    const accessData = cookieStore.get('access');
+
 
     // Check if the access cookie is present
     if (!accessData) {
@@ -28,13 +34,26 @@ export async function GET(request) {
 
         // updating with new cookie refreshing the expiry time
 
-        response.cookies.set('access', JSON.stringify(userInfo), {
+        cookies().set({
+            name: 'access',
+            value: JSON.stringify(userInfo),
+            httpOnly: true,
+            path: '/',
+            sameSite: 'lax',
+            maxAge: 15 * 60,
+        });
+
+        if (cookies().has('access')) {
+            console.log("This is the access cookie: "+ JSON.parse(cookies().get('access').value));
+        }
+
+        /*response.cookies.set('access', JSON.stringify(userInfo), {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // NextJS automatically handles the NODE_ENV, 
             path: "/",
             sameSite: "strict", // Help to prevent csrf attacks
             maxAge: 15 * 60, // 15 minutes in seconds
-        });
+        });*/
 
         return response;
 
